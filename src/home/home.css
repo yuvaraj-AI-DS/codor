@@ -1,0 +1,138 @@
+/* Home page — scoped under .home. Colors come from the tokens in index.css. */
+.home {
+  position: relative; min-height: 100vh; background: var(--bg); color: var(--text);
+  font-family: var(--font-ui); font-size: 16px; line-height: 1.55;
+}
+.home a { color: inherit; text-decoration: none; }
+.home button { font: inherit; background: none; border: 0; cursor: pointer; color: inherit; padding: 0; }
+.home :focus-visible { outline: 1.5px solid var(--info); outline-offset: 3px; border-radius: 3px; }
+
+.h-watermark { position: fixed; inset: 0; display: grid; place-items: center; pointer-events: none; z-index: 0; }
+.h-watermark img { width: min(92vh, 88vw); opacity: .06; }
+
+.h-wrap { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+/* Nav */
+.h-nav {
+  position: sticky; top: 0; z-index: 10; background: rgba(7, 28, 34, .88);
+  backdrop-filter: blur(8px); border-bottom: 1px solid var(--border);
+}
+.h-nav .h-wrap { display: flex; align-items: center; height: 60px; gap: 28px; }
+.h-brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: .02em; }
+.h-brand img { width: 26px; height: 26px; }
+.h-links { display: flex; align-items: center; gap: 22px; margin-left: auto; font-size: 14px; color: var(--muted); }
+.h-links > button:hover { color: var(--text); }
+
+/* Buttons */
+.h-btn {
+  display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 18px; border-radius: 3px;
+  font-weight: 500; font-size: 14.5px; border: 1px solid transparent; transition: background .15s, border-color .15s, color .15s;
+}
+.home .h-btn-gold { background: var(--gold); color: #1a1606; border-color: var(--gold); }
+.home .h-btn-gold:hover { background: var(--gold-bright); }
+.home .h-btn-line { border: 1px solid var(--border-strong); color: var(--text); }
+.home .h-btn-line:hover { border-color: var(--info); color: #fff; }
+.h-nav .h-btn { height: 34px; font-size: 13.5px; padding: 0 14px; }
+
+/* Wordmark: CODOR large, "untime" small and gold, sharing the R */
+.h-wordmark { display: inline-flex; align-items: baseline; font-weight: 600; letter-spacing: -.02em; line-height: 1; }
+.h-untime { font-size: .3em; font-weight: 500; letter-spacing: .01em; margin-left: .04em; color: var(--gold); }
+
+/* Hero */
+.h-hero { min-height: calc(100vh - 60px); display: flex; flex-direction: column; justify-content: center; padding: 72px 0 96px; }
+.h-eyebrow { font-family: var(--font-mono); font-size: 13px; color: var(--info); margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
+.h-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); }
+.h-hero h1 { margin: 0; font-size: clamp(56px, 11vw, 132px); }
+.h-lede { max-width: 34ch; margin: 28px 0 0; font-size: clamp(19px, 2.2vw, 23px); color: var(--muted); line-height: 1.45; }
+.h-lede strong { color: var(--text); font-weight: 500; }
+.h-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+.h-actions .h-btn { height: 48px; padding: 0 24px; font-size: 15.5px; }
+.h-hint { margin: 18px 0 0; font-size: 13px; color: var(--faint); }
+.h-cue { margin-top: 72px; font-size: 12.5px; color: var(--faint); display: flex; align-items: center; gap: 10px; }
+.h-cue span { width: 1px; height: 28px; background: var(--faint); opacity: .6; }
+
+/* Sections */
+.h-section { padding: 96px 0; }
+.h-head { max-width: 640px; margin-bottom: 44px; }
+.h-head h2 { margin: 0; font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -.015em; line-height: 1.15; font-weight: 600; }
+.h-head p { margin: 14px 0 0; color: var(--muted); font-size: 17px; }
+
+/* Preview */
+.h-preview { border: 1px solid var(--border-strong); background: var(--editor); border-radius: 4px; overflow: hidden; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .6); }
+.pv-bar { display: flex; align-items: center; height: 36px; background: var(--bg); border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 12.5px; }
+.pv-tab { height: 100%; display: flex; align-items: center; gap: 8px; padding: 0 14px; color: var(--muted); border-right: 1px solid var(--border); }
+.pv-tab.on { color: #efe9da; background: var(--editor); box-shadow: inset 0 -2px 0 var(--gold); }
+.pv-tab i { width: 7px; height: 7px; border-radius: 50%; transition: background .25s; }
+.pv-state { margin-left: auto; padding: 0 14px; color: var(--ok); letter-spacing: .04em; font-size: 11.5px; transition: color .25s; }
+.pv-state.err { color: var(--err); }
+.pv-body { display: grid; grid-template-columns: minmax(0, 1fr) 260px; }
+.pv-code { padding: 16px 0; font-family: var(--font-mono); font-size: 13.5px; line-height: 1.75; overflow-x: auto; }
+.pv-code > div { padding: 0 16px; white-space: pre; min-height: 1.75em; }
+.pv-code > div.hl { background: rgba(201, 107, 98, .12); }
+.pv-code .ln { display: inline-block; width: 26px; color: #55747a; user-select: none; }
+.pv-code .k { color: #5fa8b5; } .pv-code .s { color: #d7a85b; } .pv-code .n { color: #c28f6c; }
+.pv-code .c { color: #66858a; font-style: italic; }
+.pv-side { border-left: 1px solid var(--border); background: var(--panel); padding: 16px; font-size: 13px; }
+.pv-side h4 { margin: 0 0 10px; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.pv-out { font-family: var(--font-mono); font-size: 12.5px; min-height: 44px; }
+.pv-out .err-text { color: #dea39b; }
+.pv-bob { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); color: var(--muted); min-height: 92px; }
+.pv-bob b { color: var(--gold); font-weight: 500; }
+.pv-bob .e { color: var(--err); font-family: var(--font-mono); font-size: 12.5px; }
+.pv-bob .ok { color: var(--ok); }
+.pv-bob code { font-family: var(--font-mono); font-size: 12px; background: var(--raised); padding: 0 4px; border-radius: 2px; }
+
+/* How it runs — a real sequence */
+.h-flow { display: grid; grid-template-columns: repeat(4, 1fr); margin: 56px 0 0; padding: 0; border-top: 1px solid var(--border-strong); list-style: none; }
+.h-flow li { padding: 22px 22px 0 0; }
+.h-flow b { display: block; font-family: var(--font-mono); font-size: 12px; color: var(--gold); margin-bottom: 10px; font-weight: 500; }
+.h-flow h3 { margin: 0 0 6px; font-size: 17px; font-weight: 600; }
+.h-flow p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+/* Features */
+.h-features { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.h-feat { background: var(--panel); padding: 30px; }
+.h-wide { grid-row: span 2; }
+.h-feat h3 { margin: 0 0 8px; font-size: 19px; font-weight: 600; }
+.h-feat p { margin: 0; color: var(--muted); font-size: 15px; }
+.h-tag { display: inline-block; font-family: var(--font-mono); font-size: 11.5px; color: var(--info); margin-bottom: 14px; }
+.h-feat ul { margin: 18px 0 0; padding: 0; list-style: none; font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+.h-feat li { padding: 7px 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; }
+.h-feat .ok { color: var(--ok); } .h-feat .err { color: var(--err); }
+
+/* CTA + footer */
+.h-cta { text-align: center; padding: 110px 0 120px; }
+.h-cta h2 { margin: 0 0 12px; font-size: clamp(30px, 4.2vw, 46px); letter-spacing: -.02em; font-weight: 600; }
+.h-cta p { margin: 0 0 32px; color: var(--muted); }
+.h-cta .h-btn { height: 50px; padding: 0 28px; font-size: 16px; }
+
+.h-footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 34px 0 44px; font-size: 13.5px; color: var(--faint); }
+.h-footer .h-wrap { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.h-footer .h-wordmark { font-size: 22px; color: var(--text); }
+.h-footer b { color: var(--muted); font-weight: 500; }
+.h-right { margin-left: auto; }
+
+/* Floating button — shown once the hero scrolls away */
+.h-float {
+  position: fixed; right: 24px; bottom: 24px; z-index: 20;
+  opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .25s, transform .25s;
+}
+.h-float.is-shown { opacity: 1; transform: none; pointer-events: auto; }
+.h-float .h-btn { height: 48px; padding: 0 20px; box-shadow: 0 12px 30px -10px rgba(0, 0, 0, .7); }
+.h-float img { width: 20px; height: 20px; filter: brightness(.25); }
+
+@media (max-width: 860px) {
+  .pv-body { grid-template-columns: 1fr; }
+  .pv-side { border-left: 0; border-top: 1px solid var(--border); }
+  .h-flow { grid-template-columns: 1fr 1fr; row-gap: 28px; }
+  .h-features { grid-template-columns: 1fr; }
+  .h-wide { grid-row: auto; }
+  .h-links > button { display: none; }
+}
+@media (max-width: 520px) {
+  .h-flow { grid-template-columns: 1fr; }
+  .h-wrap { padding: 0 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .h-float, .pv-tab i, .pv-state { transition: none; }
+}
