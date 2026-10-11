@@ -60,4 +60,3 @@ npm run preview
 
 The production files are in the `dist` folder and can be deployed to any static host, such as Netlify, Vercel or GitHub Pages.
 
-## Project structure
